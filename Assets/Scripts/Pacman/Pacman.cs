@@ -9,6 +9,13 @@ public class Pacman : Scenegleton<Pacman>
         set => Instance.facing = value;
     }
 
+    private PacmanState state;
+    public static PacmanState State
+    {
+        get => Instance.state;
+        set => Instance.state = value;
+    }
+
     public static Transform Transform => Instance.transform;
     
 

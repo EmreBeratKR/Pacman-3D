@@ -1,5 +1,7 @@
 public enum Facing { Up, Down, Right, Left }
 
+public enum PacmanState { Idle, Move }
+
 public static class FacingExtensions
 {
     public static Facing Opposite(this Facing facing)

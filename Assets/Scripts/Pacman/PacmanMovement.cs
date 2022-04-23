@@ -39,15 +39,18 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
     private void Update()
     {
         UpdateDirection();
-        Move();
+        
+        Pacman.State = TryMove() ? PacmanState.Move : PacmanState.Idle;
     }
 
 
-    private void Move()
+    private bool TryMove()
     {
-        if (PacmanRaycaster.IsBlocked(Facing.Up)) return;
+        if (PacmanRaycaster.IsBlocked(Facing.Up)) return false;
 
         Pacman.Transform.position += Direction * (moveSpeed * Time.deltaTime);
+
+        return true;
     }
 
     private void UpdateDirection()
