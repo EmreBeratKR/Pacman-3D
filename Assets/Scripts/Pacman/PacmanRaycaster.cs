@@ -50,7 +50,7 @@ public class PacmanRaycaster : Scenegleton<PacmanRaycaster>
         var size = type == RaycastType.Forward ? boxCastForwardSize : boxCastSideSize;
         var maxDistance = type == RaycastType.Forward ? forwardDistance : sideDistance;
         var extraAngle = type == RaycastType.Forward ? 0 : 90;
-        var rotation = Quaternion.Euler(new Vector3(0, 0, PacmanMovement.DesiredAngle + extraAngle));
+        var rotation = Quaternion.Euler(new Vector3(0, PacmanMovement.DesiredAngle + extraAngle, 0));
         return Physics.BoxCast(Pacman.Transform.position, size * 0.5f, direction, rotation, maxDistance, targetLayer);
     }
 
@@ -59,7 +59,7 @@ public class PacmanRaycaster : Scenegleton<PacmanRaycaster>
         var size = type == RaycastType.Forward ? boxCastForwardSize : boxCastSideSize;
         var maxDistance = type == RaycastType.Forward ? forwardDistance : sideDistance;
         var extraAngle = type == RaycastType.Forward ? 0 : 90;
-        var rotation = Quaternion.Euler(new Vector3(0, 0, PacmanMovement.DesiredAngle + extraAngle));
+        var rotation = Quaternion.Euler(new Vector3(0, PacmanMovement.DesiredAngle + extraAngle, 0));
         return Physics.BoxCast(Pacman.Transform.position, size * 0.5f, direction, out hitInfo, rotation, maxDistance, targetLayer);
     }
 
@@ -81,13 +81,13 @@ public class PacmanRaycaster : Scenegleton<PacmanRaycaster>
             if (IsBlocked(direction, type, out RaycastHit hitInfo))
             {
                 Gizmos.color = debugSettings.blockedColor;
-                var rotation = Quaternion.Euler(new Vector3(0, 0, PacmanMovement.DesiredAngle + extraAngle));
+                var rotation = Quaternion.Euler(new Vector3(0, PacmanMovement.DesiredAngle + extraAngle, 0));
                 Gizmos.DrawWireMesh(debugSettings.mesh, Pacman.Transform.position + direction * hitInfo.distance, rotation, size);
             }
             else
             {
                 Gizmos.color = debugSettings.notBlockedColor;
-                var rotation = Quaternion.Euler(new Vector3(0, 0, PacmanMovement.DesiredAngle + extraAngle));
+                var rotation = Quaternion.Euler(new Vector3(0, PacmanMovement.DesiredAngle + extraAngle, 0));
                 Gizmos.DrawWireMesh(debugSettings.mesh, Pacman.Transform.position + direction * maxDistance, rotation, size);
             }
         }
@@ -97,7 +97,7 @@ public class PacmanRaycaster : Scenegleton<PacmanRaycaster>
         if (debugSettings.showInitial)
         {
             Gizmos.color = debugSettings.initialColor;
-            var rotation = Quaternion.Euler(new Vector3(0, 0, PacmanMovement.DesiredAngle));
+            var rotation = Quaternion.Euler(new Vector3(0, PacmanMovement.DesiredAngle, 0));
             Gizmos.DrawWireMesh(debugSettings.mesh, Pacman.Transform.position, rotation, boxCastForwardSize);
         }
 

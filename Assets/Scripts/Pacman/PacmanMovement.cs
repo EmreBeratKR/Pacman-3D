@@ -8,8 +8,8 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
     private Vector3 direction;
     public static Vector3 Direction => Instance.direction;
-    public static Vector3 Up => Quaternion.Euler(0, 0, DesiredAngle) * Vector3.up;
-    public static Vector3 Right => Quaternion.Euler(0, 0, DesiredAngle) * Vector3.right;
+    public static Vector3 Up => Quaternion.Euler(0, DesiredAngle, 0) * Vector3.forward;
+    public static Vector3 Right => Quaternion.Euler(0, DesiredAngle, 0) * Vector3.right;
 
 
     public static float DesiredAngle
@@ -22,9 +22,9 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
                 
                 case Facing.Down : return 180;
 
-                case Facing.Right : return -90;
+                case Facing.Right : return 90;
 
-                case Facing.Left : return 90;
+                case Facing.Left : return -90;
             }
         }
     }
@@ -61,13 +61,13 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
         if (PacmanUserInput.IsUp)
         {
             facing = Facing.Up;
-            newDirection = Vector3.up;
+            newDirection = Vector3.forward;
         }
 
         else if (PacmanUserInput.IsDown)
         {
             facing = Facing.Down;
-            newDirection = Vector3.down;
+            newDirection = Vector3.back;
         }
 
         else if (PacmanUserInput.IsRight)
@@ -94,10 +94,10 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
     private void SmoothRotate()
     {
-        var currentAngle = Pacman.Transform.eulerAngles.z;
+        var currentAngle = Pacman.Transform.eulerAngles.y;
 
         var lerpedAngle = Mathf.LerpAngle(currentAngle, DesiredAngle, rotationSpeed);
 
-        Pacman.Transform.eulerAngles = new Vector3(0, 0, lerpedAngle);
+        Pacman.Transform.eulerAngles = new Vector3(0, lerpedAngle, 0);
     }
 }

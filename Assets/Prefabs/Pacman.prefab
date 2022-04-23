@@ -162,8 +162,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  boxCastForwardSize: {x: 3, y: 0.1, z: 3}
-  boxCastSideSize: {x: 3, y: 0.1, z: 3}
+  boxCastForwardSize: {x: 3, y: 3, z: 0.1}
+  boxCastSideSize: {x: 3, y: 3, z: 0.1}
   forwardDistance: 2
   sideDistance: 3
   debugSettings:
@@ -311,7 +311,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5550027367580669176}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0.7071068, y: -0.7071068, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -320,7 +320,7 @@ Transform:
   - {fileID: 4739125659857875875}
   m_Father: {fileID: 4739125659631282273}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: -90}
 --- !u!95 &5550027367580669177
 Animator:
   serializedVersion: 4
