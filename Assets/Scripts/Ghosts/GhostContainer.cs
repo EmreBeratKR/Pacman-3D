@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GhostContainer : Scenegleton<GhostContainer>
 {
+    public static Ghost[] All => new Ghost[] { Instance.blinkyGhost, Instance.inkyGhost, Instance.pinkyGhost, Instance.clydeGhost };
+
     [SerializeField] private BlinkyGhost blinkyGhost;
     public static BlinkyGhost BlinkyGhost => Instance.blinkyGhost;
 

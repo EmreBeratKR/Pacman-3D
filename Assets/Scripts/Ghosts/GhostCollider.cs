@@ -5,9 +5,19 @@ public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnabl
     [SerializeField] private GameObject main;
     public GameObject Main => this.main;
 
+    private Ghost ghost;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        ghost = main.GetComponent<Ghost>();
+    }
 
     public void Kill()
     {
+        ghost.EnterChaseMode();
         DeadGhostSpawner.Spawn(this, main.transform.position);
         main.SetActive(false);
     }

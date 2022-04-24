@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent)), RequireComponent(typeof(GhostTargetProvider))]
 public class GhostPathFinding : MonoBehaviour
 {
     private GhostTargetProvider targetProvider;

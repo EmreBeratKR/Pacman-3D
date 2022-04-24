@@ -1,7 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Ghost))]
 public abstract class GhostTargetProvider : MonoBehaviour
 {
+    private Ghost ghost;
+
     protected abstract Vector3 ChaseModeDestination { get; }
     protected abstract Vector3 ScatterModeDestination { get; }
 
@@ -11,7 +14,7 @@ public abstract class GhostTargetProvider : MonoBehaviour
         {
             if (!GameController.GameStarted) return null;
 
-            switch (GameController.GameMode)
+            switch (ghost.Mode)
             {
                 default : return ChaseModeDestination;
 
@@ -19,6 +22,13 @@ public abstract class GhostTargetProvider : MonoBehaviour
             }
         }
     }
+
+
+    protected virtual void Awake()
+    {
+        ghost = this.GetComponent<Ghost>();
+    }
+
 
 
     public Color color;

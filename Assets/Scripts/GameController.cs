@@ -41,16 +41,26 @@ public class GameController : Scenegleton<GameController>
         EnterChaseMode();
     }
 
-    public static void EnterScatterMode()
-    {
-        Instance.gameMode = GameMode.Scatter;
-        Instance.scatterTimer = Instance.settings.scatterTime;
-    }
-
     public static void EnterChaseMode()
     {
         Instance.gameMode = GameMode.Chase;
         Instance.scatterTimer = 0;
+
+        foreach (var ghost in GhostContainer.All)
+        {
+            ghost.EnterChaseMode();
+        }
+    }
+
+    public static void EnterScatterMode()
+    {
+        Instance.gameMode = GameMode.Scatter;
+        Instance.scatterTimer = Instance.settings.scatterTime;
+        
+        foreach (var ghost in GhostContainer.All)
+        {
+            ghost.EnterScatterMode();
+        }
     }
 
 

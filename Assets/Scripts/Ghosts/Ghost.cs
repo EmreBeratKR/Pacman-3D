@@ -8,6 +8,9 @@ public abstract class Ghost : MonoBehaviour
     private GhostPathFinding pathFinder;
     public GhostPathFinding PathFinder => this.pathFinder;
 
+    private GameMode mode;
+    public GameMode Mode => this.mode;
+
     public Vector3 Position
     {
         get
@@ -22,6 +25,16 @@ public abstract class Ghost : MonoBehaviour
     protected virtual void Awake()
     {
         pathFinder = this.GetComponent<GhostPathFinding>();
+    }
+
+    public void EnterChaseMode()
+    {
+        this.mode = GameMode.Chase;
+    }
+
+    public void EnterScatterMode()
+    {
+        this.mode = GameMode.Scatter;
     }
 }
 
