@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PowerPelletCollider : CustomCollider, IConsumable
+public class PowerPelletCollider : CustomCollider<BoxCollider>, IConsumable
 {
     [SerializeField] private GameObject main;
 

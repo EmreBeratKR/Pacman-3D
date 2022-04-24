@@ -1,14 +1,14 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public abstract class CustomCollider : MonoBehaviour
+public abstract class CustomCollider<T> : MonoBehaviour where T : Collider
 {
-    private new Collider collider;
-    public Collider Collider => this.collider;
+    private new T collider;
+    public T Collider => this.collider;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        collider = this.GetComponent<Collider>();
+        collider = this.GetComponent<T>();
     }
 }

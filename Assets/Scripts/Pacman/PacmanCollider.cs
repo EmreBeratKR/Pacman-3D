@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PacmanCollider : CustomCollider, ITeleportable
+public class PacmanCollider : CustomCollider<BoxCollider>, ITeleportable
 {
     public void Teleport(Teleporter from, Teleporter to)
     {

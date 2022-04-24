@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class PacDotCollider : MonoBehaviour, IConsumable
+public class PacDotCollider : CustomCollider<BoxCollider>, IConsumable
 {
     [SerializeField] private GameObject main;
 
