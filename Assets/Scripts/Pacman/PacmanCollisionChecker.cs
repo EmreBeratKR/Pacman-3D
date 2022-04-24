@@ -26,7 +26,7 @@ public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
 
             if (overlap.TryGetComponent(out GhostCollider ghost))
             {
-                switch (GameController.GameMode)
+                switch (ghost.Mode)
                 {
                     case GameMode.Chase:
                         Pacman.Die();

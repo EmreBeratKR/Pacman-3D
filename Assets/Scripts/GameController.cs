@@ -4,8 +4,10 @@ using UnityEngine;
 public class GameController : Scenegleton<GameController>
 {
     private float scatterTimer;
+    public static float RemainingScatterTime => Instance.scatterTimer;
 
 
+    public static float CriticalScatterTime => Instance.settings.criticalScatterTime;
 
     private GameMode gameMode;
     public static GameMode GameMode => Instance.gameMode;

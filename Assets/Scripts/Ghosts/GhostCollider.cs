@@ -5,6 +5,9 @@ public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnabl
     [SerializeField] private GameObject main;
     public GameObject Main => this.main;
 
+
+    public GameMode Mode => ghost.Mode;
+
     private Ghost ghost;
 
 

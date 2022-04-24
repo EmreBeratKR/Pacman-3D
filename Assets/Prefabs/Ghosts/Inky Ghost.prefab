@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296969532034772216, guid: 0d734f0ceac084f0f8783c409fd8679d,
+        type: 3}
+      propertyPath: scatterAnimation.normalBodyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 40ee7f7f6107e46f8a5113045bf1128b, type: 2}
     - target: {fileID: 5099967522477296931, guid: 0d734f0ceac084f0f8783c409fd8679d,
         type: 3}
       propertyPath: m_Name
@@ -80,18 +85,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8984721969475363112}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5245342462940558294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4212726540316961803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9693b5f1602214a788bc24966af255cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-5095237472222161917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0, g: 1, b: 1, a: 1}
   debug: 0
+--- !u!114 &5245342462940558294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212726540316961803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9693b5f1602214a788bc24966af255cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2004,8 +2004,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    scatterTime: 5
-    criticalScatterTime: 1
+    scatterTime: 10
+    criticalScatterTime: 2
 --- !u!114 &1637423491
 MonoBehaviour:
   m_ObjectHideFlags: 0

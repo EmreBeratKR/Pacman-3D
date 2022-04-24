@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296969532034772216, guid: 0d734f0ceac084f0f8783c409fd8679d,
+        type: 3}
+      propertyPath: scatterAnimation.normalBodyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b48d3c24abc443d48838cf51a22fab2, type: 2}
     - target: {fileID: 5099967522477296931, guid: 0d734f0ceac084f0f8783c409fd8679d,
         type: 3}
       propertyPath: m_Name
