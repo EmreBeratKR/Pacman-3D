@@ -21,6 +21,7 @@ public class Pacman : Scenegleton<Pacman>
         get => Instance.facing;
         set => Instance.facing = value;
     }
+    public static Facing InitialFacing => Facing.Right;
 
     private PacmanState state = PacmanState.Idle;
     public static PacmanState State

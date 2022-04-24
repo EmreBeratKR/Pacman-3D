@@ -25,6 +25,8 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
                 case Facing.Right : return 90;
 
                 case Facing.Left : return -90;
+
+                case Facing.None : return 90;
             }
         }
     }
@@ -39,15 +41,33 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
     private void Update()
     {
         UpdateDirection();
-        
-        Pacman.State = TryMove() ? PacmanState.Move : PacmanState.Idle;
-        if (!GameController.GameStarted)
+
+        if (!TryStartGame())
         {
             Pacman.State = PacmanState.Idle;
+            return;
         }
+        
+        Pacman.State = TryMove() ? PacmanState.Move : PacmanState.Idle;
     }
 
 
+    private bool TryStartGame()
+    {
+        if (!GameController.GameStarted)
+        {
+            if (Pacman.Facing != Facing.None)
+            {
+                GameController.StartGame();
+                return true;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+    
     private bool TryMove()
     {
         if (PacmanRaycaster.IsBlocked(Facing.Up)) return false;
@@ -88,12 +108,14 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
         if (facing == Pacman.Facing) return;
 
-        if (!GameController.GameStarted)
+        var currentFacing = Pacman.Facing;
+
+        if (currentFacing == Facing.None)
         {
-            GameController.StartGame();
+            currentFacing = Pacman.InitialFacing;
         }
 
-        var relativeFacing = facing.Relative(Pacman.Facing);
+        var relativeFacing = facing.Relative(currentFacing);
 
         if (PacmanRaycaster.IsBlocked(relativeFacing)) return;
 

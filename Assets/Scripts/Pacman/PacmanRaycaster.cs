@@ -39,6 +39,8 @@ public class PacmanRaycaster : Scenegleton<PacmanRaycaster>
                 direction = -PacmanMovement.Right;
                 type = RaycastType.Side;
                 break;
+                
+            case Facing.None : return true;
         }
 
         return Instance.IsBlocked(direction, type);

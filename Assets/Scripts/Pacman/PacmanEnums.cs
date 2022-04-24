@@ -15,6 +15,8 @@ public static class FacingExtensions
             case Facing.Right : return Facing.Left;
 
             case Facing.Left : return Facing.Right;
+
+            case Facing.None : return Facing.None;
         }
     }
 
@@ -49,6 +51,8 @@ public static class FacingExtensions
 
                     case Facing.Left : return Facing.Up;
                 }
+
+            case Facing.None : return Facing.None;
         }
     }
 }

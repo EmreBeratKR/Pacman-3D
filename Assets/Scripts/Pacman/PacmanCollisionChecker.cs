@@ -1,0 +1,47 @@
+using System;
+using UnityEngine;
+
+public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
+{
+    [SerializeField] private Vector3 colliderSize;
+    [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private DebugSettings debugSettings;
+
+
+
+    private void Update()
+    {
+        Check();
+    }
+
+    private void Check()
+    {
+        var overlaps = Physics.OverlapBox(Pacman.Transform.position, colliderSize * 0.5f, Quaternion.identity, targetLayer);
+
+        foreach (var overlap in overlaps)
+        {
+            if (overlap.TryGetComponent(out IConsumable consumable))
+            {
+                consumable.Consume();
+            }
+        }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+
+        if (!debugSettings.debug) return;
+
+        Gizmos.color = debugSettings.color;
+        Gizmos.DrawWireCube(Pacman.Transform.position, colliderSize);
+    }
+}
+
+[Serializable]
+internal struct DebugSettings
+{
+    public Color color;
+    public bool debug;
+}
