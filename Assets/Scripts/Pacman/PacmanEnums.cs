@@ -1,4 +1,4 @@
-public enum Facing { Up, Down, Right, Left }
+public enum Facing { Up, Down, Right, Left, None }
 
 public enum PacmanState { Idle, Move }
 

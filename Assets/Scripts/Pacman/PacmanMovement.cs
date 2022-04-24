@@ -41,6 +41,10 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
         UpdateDirection();
         
         Pacman.State = TryMove() ? PacmanState.Move : PacmanState.Idle;
+        if (!GameController.GameStarted)
+        {
+            Pacman.State = PacmanState.Idle;
+        }
     }
 
 
@@ -83,6 +87,11 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
         }
 
         if (facing == Pacman.Facing) return;
+
+        if (!GameController.GameStarted)
+        {
+            GameController.StartGame();
+        }
 
         var relativeFacing = facing.Relative(Pacman.Facing);
 

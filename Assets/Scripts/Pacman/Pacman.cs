@@ -15,14 +15,14 @@ public class Pacman : Scenegleton<Pacman>
         }
     }
 
-    private Facing facing;
+    private Facing facing = Facing.None;
     public static Facing Facing
     {
         get => Instance.facing;
         set => Instance.facing = value;
     }
 
-    private PacmanState state;
+    private PacmanState state = PacmanState.Idle;
     public static PacmanState State
     {
         get => Instance.state;

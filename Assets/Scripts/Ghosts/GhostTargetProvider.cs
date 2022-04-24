@@ -5,10 +5,12 @@ public abstract class GhostTargetProvider : MonoBehaviour
     protected abstract Vector3 ChaseModeDestination { get; }
     protected abstract Vector3 ScatterModeDestination { get; }
 
-    public Vector3 Destination
+    public Vector3? Destination
     {
         get
         {
+            if (!GameController.GameStarted) return null;
+
             switch (GameController.GameMode)
             {
                 default : return ChaseModeDestination;

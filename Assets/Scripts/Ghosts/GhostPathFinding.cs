@@ -23,6 +23,8 @@ public class GhostPathFinding : MonoBehaviour
 
     private void Update()
     {
-        agent.destination = targetProvider.Destination;
+        if (!targetProvider.Destination.HasValue) return;
+
+        agent.destination = targetProvider.Destination.Value;
     }
 }

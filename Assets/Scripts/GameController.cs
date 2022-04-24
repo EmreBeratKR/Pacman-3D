@@ -5,10 +5,14 @@ public class GameController : Scenegleton<GameController>
     private GameMode gameMode;
     public static GameMode GameMode => Instance.gameMode;
 
+    private bool gameStarted = false;
+    public static bool GameStarted => Instance.gameStarted;
 
-    private void Start()
+
+    public static void StartGame()
     {
-        gameMode = GameMode.Chase;
+        Instance.gameStarted = true;
+        Instance.gameMode = GameMode.Chase;
     }
 }
 
