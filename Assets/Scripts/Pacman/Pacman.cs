@@ -41,4 +41,10 @@ public class Pacman : Scenegleton<Pacman>
             return result;
         }
     }
+
+
+    public static void Die()
+    {
+        Instance.gameObject.SetActive(false);
+    }
 }

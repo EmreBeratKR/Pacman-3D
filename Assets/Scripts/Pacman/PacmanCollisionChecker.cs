@@ -23,6 +23,20 @@ public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
             {
                 consumable.Consume();
             }
+
+            if (overlap.TryGetComponent(out GhostCollider ghost))
+            {
+                switch (GameController.GameMode)
+                {
+                    case GameMode.Chase:
+                        Pacman.Die();
+                        break;
+
+                    case GameMode.Scatter:
+                        ghost.Kill();
+                        break;
+                }
+            }
         }
     }
 

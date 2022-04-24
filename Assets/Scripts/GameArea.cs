@@ -4,11 +4,22 @@ public class GameArea : Scenegleton<GameArea>
 {
     public const float DotDistance = 3;
 
+    [SerializeField] private Transform center;
     [SerializeField] private Transform topRightCorner;
     [SerializeField] private Transform topLeftCorner;
     [SerializeField] private Transform bottomRightCorner;
     [SerializeField] private Transform bottomLeftCorner;
 
+
+    public static Vector3 Center
+    {
+        get
+        {
+            var result = Instance.center.position;
+            result.y = 0;
+            return result;
+        }
+    }
 
     public static Vector3 TopRightCorner
     {

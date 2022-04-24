@@ -7,6 +7,7 @@ public class PowerPelletCollider : CustomCollider<BoxCollider>, IConsumable
 
     public void Consume()
     {
+        GameController.EnterScatterMode();
         Destroy(main);
     }
 }

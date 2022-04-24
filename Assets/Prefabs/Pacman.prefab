@@ -47,7 +47,7 @@ MonoBehaviour:
   colliderSize: {x: 2, y: 2, z: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   debugSettings:
     color: {r: 0, g: 1, b: 0.25339842, a: 1}
     debug: 0
