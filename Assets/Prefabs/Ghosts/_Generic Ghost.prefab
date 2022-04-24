@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5099967521526191603}
   - component: {fileID: 5099967521526191602}
   m_Layer: 0
-  m_Name: Generic Ghost
+  m_Name: _Generic Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

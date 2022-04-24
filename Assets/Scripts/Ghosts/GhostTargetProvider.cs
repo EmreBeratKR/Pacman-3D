@@ -19,11 +19,12 @@ public abstract class GhostTargetProvider : MonoBehaviour
     }
 
 
-    public bool Debug;
+    public Color color;
+    public bool debug;
     protected virtual bool OnDrawGizmos()
     {
         if (!Application.isPlaying) return false;
 
-        return Debug;
+        return debug;
     }
 }

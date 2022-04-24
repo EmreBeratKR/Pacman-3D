@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Pacman : Scenegleton<Pacman>
 {
-    [SerializeField] private Transform desiredPosition;
+    public const float TouchRange = 1;
+
+
     public static Vector3 DesiredPosition
     {
         get
         {
-            var result = Instance.desiredPosition.position;
+            var result = Position + PacmanMovement.Up * GameArea.DotDistance * 2;
             result.y = 0;
             return result;
         }
@@ -29,5 +31,13 @@ public class Pacman : Scenegleton<Pacman>
 
     public static Transform Transform => Instance.transform;
     
-
+    public static Vector3 Position
+    {
+        get
+        {
+            var result = Instance.transform.position;
+            result.y = 0;
+            return result;
+        }
+    }
 }

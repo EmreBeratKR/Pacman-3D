@@ -6,10 +6,8 @@ public class InkyTargetProvider : GhostTargetProvider
     {
         get
         {
-            var pacmanPos = Pacman.Transform.position;
-            pacmanPos.y = 0;
             var blinkyPos = GhostContainer.BlinkyGhost.Position;
-            var blinkyDistance = pacmanPos - blinkyPos;
+            var blinkyDistance = Pacman.Position - blinkyPos;
             return blinkyPos + blinkyDistance * 2;
         }
     }
@@ -21,7 +19,7 @@ public class InkyTargetProvider : GhostTargetProvider
     {
         if (!base.OnDrawGizmos()) return false;
 
-        Gizmos.color = Color.cyan;
+        Gizmos.color = this.color;
         Gizmos.DrawLine(GhostContainer.BlinkyGhost.Position + Vector3.up, ChaseModeDestination + Vector3.up);
 
         return true;

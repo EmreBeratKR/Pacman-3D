@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameArea : Scenegleton<GameArea>
 {
+    public const float DotDistance = 3;
+
     [SerializeField] private Transform topRightCorner;
     [SerializeField] private Transform topLeftCorner;
     [SerializeField] private Transform bottomRightCorner;

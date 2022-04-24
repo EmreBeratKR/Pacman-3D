@@ -7,4 +7,10 @@ public class GhostContainer : Scenegleton<GhostContainer>
 
     [SerializeField] private InkyGhost inkyGhost;
     public static InkyGhost InkyGhost => Instance.inkyGhost;
+
+    [SerializeField] private PinkyGhost pinkyGhost;
+    public static PinkyGhost PinkyGhost => Instance.pinkyGhost;
+
+    [SerializeField] private ClydeGhost clydeGhost;
+    public static ClydeGhost ClydeGhost => Instance.clydeGhost;
 }
