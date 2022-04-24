@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609281064465969966}
   - component: {fileID: 7905000970118377971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 3895605454350663503}
   - component: {fileID: 3051359940867021004}
   - component: {fileID: 1614625278536256723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739125658955259148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739125659282440237}
   - component: {fileID: 4739125659282440234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Raycaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,9 +212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 8
-  boxCastForwardSize: {x: 2.5, y: 2.5, z: 0.1}
-  boxCastSideSize: {x: 3, y: 3, z: 0.1}
+    m_Bits: 264
+  boxCastForwardSize: {x: 2.5, y: 4, z: 0.1}
+  boxCastSideSize: {x: 3, y: 4, z: 0.1}
   forwardDistance: 1.5
   sideDistance: 3
   debugSettings:
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 4739125659631282300}
   - component: {fileID: 4739125659631282303}
   - component: {fileID: 4739125659631282302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pacman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,6 +261,7 @@ Transform:
   - {fileID: 5066119469091769922}
   - {fileID: 4739125659282440237}
   - {fileID: 609281064465969966}
+  - {fileID: 7971237265835018539}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739125659857875875}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +350,7 @@ GameObject:
   - component: {fileID: 5066119469091769922}
   - component: {fileID: 5550027367580669177}
   - component: {fileID: 5550027367580669174}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,6 +410,64 @@ MonoBehaviour:
     animator: {fileID: 5550027367580669177}
     idle: Idle
     move: Move
+--- !u!1 &7251531094191782242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7971237265835018539}
+  - component: {fileID: 8216042133111418818}
+  - component: {fileID: 1084771131969621886}
+  m_Layer: 9
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7971237265835018539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251531094191782242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4739125659631282273}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8216042133111418818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251531094191782242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1084771131969621886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251531094191782242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee74a19c594f436b833f850319b2295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8980842676006805899
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +479,7 @@ GameObject:
   - component: {fileID: 496352986318928958}
   - component: {fileID: 445924808040868637}
   - component: {fileID: 3580044489625213396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

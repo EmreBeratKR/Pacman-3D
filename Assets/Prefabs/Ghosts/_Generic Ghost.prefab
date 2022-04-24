@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7100402813720685885}
   - component: {fileID: 5364111390686413570}
   - component: {fileID: 2285847596321891374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7356859709785381252}
   - component: {fileID: 7188795397298826043}
   - component: {fileID: 6080532313945085025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5099967522477296932}
   - component: {fileID: 5099967521526191603}
   - component: {fileID: 5099967521526191602}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: _Generic Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4705135769332406463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 9156836950905730414}
   - component: {fileID: 1601712591888535734}
   - component: {fileID: 7307789772649416818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

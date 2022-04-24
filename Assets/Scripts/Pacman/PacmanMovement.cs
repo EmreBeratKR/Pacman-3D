@@ -6,8 +6,25 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
     [SerializeField, Range(0, 1f)] private float rotationSpeed;
 
 
-    private Vector3 direction;
-    public static Vector3 Direction => Instance.direction;
+    public static Vector3 Direction
+    {
+        get
+        {
+            switch (Pacman.Facing)
+            {
+                default : return Vector3.zero;
+
+                case Facing.Up : return Vector3.forward;
+                
+                case Facing.Down : return Vector3.back;
+                
+                case Facing.Right : return Vector3.right;
+
+                case Facing.Left : return Vector3.left;
+            }
+        }
+    }
+
     public static Vector3 Up => Quaternion.Euler(0, DesiredAngle, 0) * Vector3.forward;
     public static Vector3 Right => Quaternion.Euler(0, DesiredAngle, 0) * Vector3.right;
 
@@ -40,7 +57,7 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
     private void Update()
     {
-        UpdateDirection();
+        UpdateFacing();
 
         if (!TryStartGame())
         {
@@ -77,33 +94,28 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
         return true;
     }
 
-    private void UpdateDirection()
+    private void UpdateFacing()
     {
         var facing = Pacman.Facing;
-        var newDirection = direction;
 
         if (PacmanUserInput.IsUp)
         {
             facing = Facing.Up;
-            newDirection = Vector3.forward;
         }
 
         else if (PacmanUserInput.IsDown)
         {
             facing = Facing.Down;
-            newDirection = Vector3.back;
         }
 
         else if (PacmanUserInput.IsRight)
         {
             facing = Facing.Right;
-            newDirection = Vector3.right;
         }
 
         else if (PacmanUserInput.IsLeft)
         {
             facing = Facing.Left;
-            newDirection = Vector3.left;
         }
 
         if (facing == Pacman.Facing) return;
@@ -120,7 +132,6 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
         if (PacmanRaycaster.IsBlocked(relativeFacing)) return;
 
         Pacman.Facing = facing;
-        direction = newDirection;
     }
 
     private void SmoothRotate()

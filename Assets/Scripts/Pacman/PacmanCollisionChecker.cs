@@ -5,7 +5,6 @@ public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
 {
     [SerializeField] private Vector3 colliderSize;
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private DebugSettings debugSettings;
 
 
 
@@ -37,11 +36,15 @@ public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
         Gizmos.color = debugSettings.color;
         Gizmos.DrawWireCube(Pacman.Transform.position, colliderSize);
     }
-}
 
-[Serializable]
-internal struct DebugSettings
-{
-    public Color color;
-    public bool debug;
+
+
+    [SerializeField] private DebugSettings debugSettings;
+
+    [Serializable]
+    internal struct DebugSettings
+    {
+        public Color color;
+        public bool debug;
+    }
 }
