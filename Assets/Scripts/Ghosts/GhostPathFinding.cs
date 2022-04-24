@@ -8,6 +8,36 @@ public class GhostPathFinding : MonoBehaviour
     private NavMeshAgent agent;
 
 
+    public Vector3 Direction
+    {
+        get 
+        {
+            var velocity = agent.velocity;
+            velocity.y = 0;
+            return velocity.normalized;
+        }
+    }
+
+    public Facing Facing
+    {
+        get
+        {
+            if (IsArrived) return Facing.None;
+
+            var direction = Direction;
+
+            var upDot = Vector3.Dot(direction, Vector3.forward);
+            var rightDot = Vector3.Dot(direction, Vector3.right);
+            
+            if (Mathf.Abs(upDot) > Mathf.Abs(rightDot))
+            {
+                return upDot < 0 ? Facing.Down : Facing.Up;
+            }
+
+            return rightDot < 0 ? Facing.Left : Facing.Right;
+        }
+    }
+
     public bool IsArrived
     {
         get

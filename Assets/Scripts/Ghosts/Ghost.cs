@@ -11,6 +11,8 @@ public abstract class Ghost : MonoBehaviour
     private GameMode mode;
     public GameMode Mode => this.mode;
 
+    public Facing Facing => pathFinder.Facing;
+
     public Vector3 Position
     {
         get
