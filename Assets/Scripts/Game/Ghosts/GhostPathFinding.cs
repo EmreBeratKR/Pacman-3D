@@ -1,9 +1,16 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent)), RequireComponent(typeof(GhostTargetProvider))]
 public class GhostPathFinding : MonoBehaviour
 {
+    [SerializeField] private float basePacingTime;
+    [SerializeField] private float sleepTime;
+    private Vector3 initialPosition;
+    private bool isPacing;
+    private bool isUp;
+
     private GhostTargetProvider targetProvider;
     private NavMeshAgent agent;
 
@@ -22,6 +29,11 @@ public class GhostPathFinding : MonoBehaviour
     {
         get
         {
+            if (isPacing)
+            {
+                return isUp ? Facing.Up : Facing.Down;
+            }
+
             if (IsArrived) return Facing.None;
 
             var direction = Direction;
@@ -55,8 +67,13 @@ public class GhostPathFinding : MonoBehaviour
 
     private void Start()
     {
+        initialPosition = transform.position;
         SetAgent();
         targetProvider = this.GetComponent<GhostTargetProvider>();
+        if (basePacingTime > 0)
+        {
+            PaceUpAndDown();
+        }
     }
 
     private void SetAgent()
@@ -65,9 +82,55 @@ public class GhostPathFinding : MonoBehaviour
         agent.updateRotation = false;
     }
 
+    private void PaceUpAndDown()
+    {
+        isPacing = true;
+        agent.enabled = false;
+
+        StartCoroutine(PacingCoroutine());
+
+
+        IEnumerator PacingCoroutine()
+        {
+            isUp = true;
+
+            while (!targetProvider.Destination.HasValue)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(sleepTime);
+
+            while (basePacingTime > 0)
+            {
+                while (true)
+                {
+                    var deltaTime = Time.deltaTime;
+
+                    transform.position += (isUp ? Vector3.forward : Vector3.back) * (agent.speed * deltaTime);
+
+                    if (Mathf.Abs(transform.position.z - initialPosition.z) >= 2)
+                    {
+                        isUp = !isUp;
+                        break;
+                    }
+
+                    basePacingTime -= deltaTime;
+
+                    yield return null; 
+                }
+            }
+
+            isPacing = false;
+            agent.enabled = true;
+        }
+    }
+
 
     private void Update()
     {
+        if (isPacing) return;
+
         agent.isStopped = GameController.IsFreezed;
 
         if (!targetProvider.Destination.HasValue) return;

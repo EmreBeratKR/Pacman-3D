@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: scatterAnimation.normalBodyMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 40ee7f7f6107e46f8a5113045bf1128b, type: 2}
+    - target: {fileID: 5099967521526191602, guid: 0d734f0ceac084f0f8783c409fd8679d,
+        type: 3}
+      propertyPath: sleepTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099967521526191602, guid: 0d734f0ceac084f0f8783c409fd8679d,
+        type: 3}
+      propertyPath: basePacingTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5099967522477296931, guid: 0d734f0ceac084f0f8783c409fd8679d,
         type: 3}
       propertyPath: m_Name
