@@ -1728,6 +1728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dieParticles: {fileID: 7351842095672093347, guid: 6b17890a57e9b46239ad492a414a7682,
     type: 3}
+  scoreParticle: {fileID: 5630424957751400987, guid: dbf3538c12f28408ea7c243128e61cb3,
+    type: 3}
 --- !u!1 &937972167
 GameObject:
   m_ObjectHideFlags: 0

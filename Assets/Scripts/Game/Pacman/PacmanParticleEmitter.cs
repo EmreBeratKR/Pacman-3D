@@ -4,6 +4,7 @@ using UnityEngine;
 public class PacmanParticleEmitter : Scenegleton<PacmanParticleEmitter>
 {
     [SerializeField] private ParticleSystem dieParticles;
+    [SerializeField] private ScoreParticle scoreParticle;
 
 
     public static Coroutine EmitDieParticles()
@@ -19,5 +20,11 @@ public class PacmanParticleEmitter : Scenegleton<PacmanParticleEmitter>
 
             Destroy(particles.gameObject);
         }
+    }
+    
+    public static void EmitScoreParticle(int score)
+    {
+        var particle = Instantiate(Instance.scoreParticle, Pacman.Position + Vector3.up * 2.5f, Quaternion.identity, Instance.transform);
+        particle.Set(score);
     }
 }

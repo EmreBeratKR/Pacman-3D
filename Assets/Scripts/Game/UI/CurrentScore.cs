@@ -61,6 +61,8 @@ public class CurrentScore : Scenegleton<CurrentScore>
 
         AddScore(score);
         UpdateScoreCounter();
+
+        PacmanParticleEmitter.EmitScoreParticle(score);
     }
 
     private void OnGameModeChanged(GameMode gameMode)

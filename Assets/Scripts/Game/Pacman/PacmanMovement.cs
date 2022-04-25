@@ -57,6 +57,8 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
     private void Update()
     {
+        if (GameController.IsFreezed) return;
+
         UpdateFacing();
 
         if (!TryStartGame())

@@ -16,6 +16,9 @@ public class GameController : Scenegleton<GameController>
     private bool gameStarted = false;
     public static bool GameStarted => Instance.gameStarted;
 
+    private bool isFreezed = false;
+    public static bool IsFreezed => Instance.isFreezed;
+
     public static bool IsCriticalScatter => Instance.scatterTimer <= Instance.settings.criticalScatterTime;
 
 
@@ -36,6 +39,8 @@ public class GameController : Scenegleton<GameController>
 
     private bool TryExitScatterMode()
     {
+        if (isFreezed) return false;
+
         scatterTimer -= Time.deltaTime;
 
         if (scatterTimer <= 0)
@@ -77,6 +82,16 @@ public class GameController : Scenegleton<GameController>
     {
         Instance.gameStarted = true;
         EnterChaseMode();
+    }
+
+    public static void FreezeGame()
+    {
+        Instance.isFreezed = true;
+    }
+
+    public static void UnFreezeGame()
+    {
+        Instance.isFreezed = false;
     }
 
     public static void EnterChaseMode()

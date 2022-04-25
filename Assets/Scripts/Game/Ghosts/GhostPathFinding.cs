@@ -68,6 +68,8 @@ public class GhostPathFinding : MonoBehaviour
 
     private void Update()
     {
+        agent.isStopped = GameController.IsFreezed;
+
         if (!targetProvider.Destination.HasValue) return;
 
         agent.destination = targetProvider.Destination.Value;
