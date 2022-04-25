@@ -38,6 +38,14 @@ public class GameOverTitle : Scenegleton<GameOverTitle>
                 
                 yield return null;
             }
+
+            yield return new WaitForSeconds(0.5f);
+
+            yield return SceneTransition.FadeIn();
+            
+            SceneController.LoadMainMenu();
+
+            yield return SceneTransition.FadeOut();
         }
     }
 }

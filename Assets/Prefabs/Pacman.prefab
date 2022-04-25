@@ -303,10 +303,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0968b68f351bf49a9ab8beb1ea116d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goUp: 119
-  goDown: 115
-  goRight: 100
-  goLeft: 97
+  goUp: 7700000011010000
+  goDown: 7300000012010000
+  goRight: 6400000013010000
+  goLeft: 6100000014010000
 --- !u!1 &4739125659857875874
 GameObject:
   m_ObjectHideFlags: 0

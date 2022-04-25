@@ -3,6 +3,8 @@ using TMPro;
 
 public class CurrentScore : Scenegleton<CurrentScore>
 {
+    private const string PlayerPrefs_CurrentScore = "Current Score";
+    private const int StartingScore = 0;
     private const int SingleGhostKillScore = 200;
     private const int DoubleGhostKillScore = 400;
     private const int TripleGhostKillScore = 800;
@@ -12,10 +14,25 @@ public class CurrentScore : Scenegleton<CurrentScore>
     [SerializeField] private TextMeshProUGUI counter;
     private int ghostKillCount = 0;
 
-    private int score = 0;
-    public static int Score => Instance.score;
+    public static int Score
+    {
+        get => PlayerPrefs.GetInt(PlayerPrefs_CurrentScore, StartingScore);
+        private set => PlayerPrefs.SetInt(PlayerPrefs_CurrentScore, value);
+    }
 
-    
+
+    public static void ResetScore()
+    {
+        Score = StartingScore;
+        Instance.UpdateScoreCounter();
+    }
+
+
+    private void Start()
+    {
+        UpdateScoreCounter();   
+    }
+
     private void OnEnable()
     {
         EventSystem.OnGhostKilled += OnGhostKilled;
@@ -60,11 +77,11 @@ public class CurrentScore : Scenegleton<CurrentScore>
 
     private void AddScore(int score)
     {
-        this.score += score;
+        Score += score;
     }
 
     private void UpdateScoreCounter()
     {
-        counter.text = this.score.ToString();
+        counter.text = Score.ToString();
     }
 }

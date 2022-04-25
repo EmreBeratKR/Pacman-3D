@@ -22,6 +22,8 @@ public class SceneController : Singleton<SceneController>
 
         IEnumerator LoadGameCoroutine()
         {
+            yield return SceneTransition.FadeIn();
+
             var operation = SceneManager.LoadSceneAsync(Instance.scenes.game);
 
             while (!operation.isDone)
@@ -30,6 +32,8 @@ public class SceneController : Singleton<SceneController>
             }
 
             GameController.Init();
+
+            yield return SceneTransition.FadeOut();
         }
     }
 
@@ -39,8 +43,11 @@ public class SceneController : Singleton<SceneController>
 
         IEnumerator RestartCoroutine()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return SceneTransition.FadeIn();
+
             LoadGame();
+
+            yield return SceneTransition.FadeOut();
         }
     }
 

@@ -61,6 +61,7 @@ public class GameController : Scenegleton<GameController>
     public static void Init()
     {
         Pacman.RestoreLives();
+        CurrentScore.ResetScore();
     }
 
     public static void StartGame()
