@@ -37,9 +37,9 @@ public class SceneController : Singleton<SceneController>
         }
     }
 
-    public static void RestartGame()
+    public static Coroutine RestartGame()
     {
-        Instance.StartCoroutine(RestartCoroutine());
+        return Instance.StartCoroutine(RestartCoroutine());
 
         IEnumerator RestartCoroutine()
         {

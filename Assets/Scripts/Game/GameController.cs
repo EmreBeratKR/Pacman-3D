@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameController : Scenegleton<GameController>
@@ -48,13 +49,21 @@ public class GameController : Scenegleton<GameController>
 
     private void OnGameOver(int score, int lifeLeft)
     {
-        if (lifeLeft == 0)
-        {
-            GameOverTitle.Show();
-            return;
-        }
+        StartCoroutine(GameOverCoroutine());
 
-        SceneController.RestartGame();
+        IEnumerator GameOverCoroutine()
+        {
+            yield return PacmanParticleEmitter.EmitDieParticles();
+
+            if (lifeLeft == 0)
+            {
+                yield return GameOverTitle.Show();
+            }
+            else
+            {
+                yield return SceneController.RestartGame();
+            }
+        }
     }
 
 

@@ -11,12 +11,12 @@ public class GameOverTitle : Scenegleton<GameOverTitle>
 
 
 
-    public static void Show()
+    public static Coroutine Show()
     {
         Instance.title.text = "";
         Instance.title.gameObject.SetActive(true);
 
-        Instance.StartCoroutine(ShowCoroutine());
+        return Instance.StartCoroutine(ShowCoroutine());
 
         IEnumerator ShowCoroutine()
         {
