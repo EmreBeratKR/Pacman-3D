@@ -62,6 +62,8 @@ public class GameController : Scenegleton<GameController>
 
             if (lifeLeft == 0)
             {
+                ConsumableContainer.Destroy();
+                
                 yield return GameOverTitle.Show();
             }
             else

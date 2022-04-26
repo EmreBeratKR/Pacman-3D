@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class PacDotCollider : CustomCollider<BoxCollider>, IConsumable
 {
     private static int Value = 10;
