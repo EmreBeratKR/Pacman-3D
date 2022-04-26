@@ -35,6 +35,7 @@ public class PacmanCollisionChecker : Scenegleton<PacmanCollisionChecker>
 
                     case GameMode.Scatter:
                         ghost.Kill();
+                        AudioManager.PlayEatGhost();
                         EventSystem.GhostKilled();
                         break;
                 }

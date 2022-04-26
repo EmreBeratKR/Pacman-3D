@@ -15226,6 +15226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5b9e15ce1b44adaba15c7a34b9deeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadGhosts: {fileID: 1068341772}
   blinkyGhost: {fileID: 1615030916}
   inkyGhost: {fileID: 1282009659}
   pinkyGhost: {fileID: 1510836397}

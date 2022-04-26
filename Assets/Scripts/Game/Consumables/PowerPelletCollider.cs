@@ -11,6 +11,7 @@ public class PowerPelletCollider : CustomCollider<BoxCollider>, IConsumable
     {
         GameController.EnterScatterMode();
         main.transform.parent = null;
+        AudioManager.PlayGhostTurnBlue();
         EventSystem.ConsumableConsumed(Value);
         Destroy(main);
     }

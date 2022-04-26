@@ -56,6 +56,12 @@ public class GameController : Scenegleton<GameController>
 
     private void OnGameWin()
     {
+        AudioManager.StopGhostMove();
+        AudioManager.StopGhostTurnBlue();
+
+        GhostContainer.HideAll();
+        GhostContainer.ClearDeadGhosts();
+
         StartCoroutine(GameWinCoroutine());
 
         IEnumerator GameWinCoroutine()
@@ -76,11 +82,21 @@ public class GameController : Scenegleton<GameController>
 
     private void OnGameOver(int score, int lifeLeft)
     {
+        AudioManager.StopGhostMove();
+        AudioManager.StopGhostTurnBlue();
+
+        GhostContainer.HideAll();
+        GhostContainer.ClearDeadGhosts();
+
         StartCoroutine(GameOverCoroutine());
 
         IEnumerator GameOverCoroutine()
         {
+            AudioManager.PlayGameOver();
+
             yield return PacmanParticleEmitter.EmitDieParticles();
+
+            while (AudioManager.IsGameOverPlaying) yield return null;
 
             if (lifeLeft == 0)
             {
@@ -106,22 +122,28 @@ public class GameController : Scenegleton<GameController>
     {
         Pacman.RestoreLives();
         CurrentScore.ResetScore();
+        AudioManager.PlayStartMusic();
     }
 
     public static void StartGame()
     {
         Instance.gameStarted = true;
         EnterChaseMode();
+        AudioManager.PlayGhostMove();
     }
 
     public static void FreezeGame()
     {
         Instance.isFreezed = true;
+        AudioManager.StopGhostMove();
+        AudioManager.PauseGhostTurnBlue();
     }
 
     public static void UnFreezeGame()
     {
         Instance.isFreezed = false;
+        AudioManager.PlayGhostMove();
+        AudioManager.UnPauseGhostTurnBlue();
     }
 
     public static void EnterChaseMode()

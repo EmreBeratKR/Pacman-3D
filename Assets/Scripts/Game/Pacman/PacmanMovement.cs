@@ -73,6 +73,8 @@ public class PacmanMovement : Scenegleton<PacmanMovement>
 
     private bool TryStartGame()
     {
+        if (AudioManager.IsStartMusicPlaying) return false;
+
         if (!GameController.GameStarted)
         {
             if (Pacman.Facing != Facing.None)

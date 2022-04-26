@@ -38,6 +38,11 @@ public abstract class Ghost : MonoBehaviour
     {
         this.mode = GameMode.Scatter;
     }
+
+    public void Hide()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
 
 public enum GhostType { Blinky, Inky, Pinky, Clyde, Dead }

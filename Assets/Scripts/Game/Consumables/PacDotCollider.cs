@@ -10,6 +10,7 @@ public class PacDotCollider : CustomCollider<BoxCollider>, IConsumable
     public void Consume()
     {
         main.transform.parent = null;
+        AudioManager.PlayEatDot();
         EventSystem.ConsumableConsumed(Value);
         Destroy(main);
     }
