@@ -51,6 +51,16 @@ public class Pacman : Scenegleton<Pacman>
     }
 
 
+    public static void Show()
+    {
+        Instance.gameObject.SetActive(true);
+    }
+
+    public static void Hide()
+    {
+        Instance.gameObject.SetActive(false);
+    }
+
     public static void Die()
     {
         Pacman.RemainingLife--;

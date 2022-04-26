@@ -10,6 +10,7 @@ public class ScoreParticle : MonoBehaviour
 
     private void Start()
     {
+        Pacman.Hide();
         GameController.FreezeGame();
         camera = Camera.main.transform;
         Destroy(this.gameObject, lifeTime);
@@ -17,6 +18,7 @@ public class ScoreParticle : MonoBehaviour
 
     private void OnDestroy()
     {
+        Pacman.Show();
         GameController.UnFreezeGame();
     }
 

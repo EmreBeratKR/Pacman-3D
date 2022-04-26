@@ -7,6 +7,7 @@ public class GhostPathFinding : MonoBehaviour
 {
     [SerializeField] private float basePacingTime;
     [SerializeField] private float sleepTime;
+    private Coroutine pacingCoroutine;
     private Vector3 initialPosition;
     private bool isPacing;
     private bool isUp;
@@ -87,7 +88,7 @@ public class GhostPathFinding : MonoBehaviour
         isPacing = true;
         agent.enabled = false;
 
-        StartCoroutine(PacingCoroutine());
+        pacingCoroutine = StartCoroutine(PacingCoroutine());
 
 
         IEnumerator PacingCoroutine()
@@ -105,6 +106,8 @@ public class GhostPathFinding : MonoBehaviour
             {
                 while (true)
                 {
+                    if (GameController.IsFreezed) StopCoroutine(pacingCoroutine);
+
                     var deltaTime = Time.deltaTime;
 
                     transform.position += (isUp ? Vector3.forward : Vector3.back) * (agent.speed * deltaTime);
@@ -123,6 +126,7 @@ public class GhostPathFinding : MonoBehaviour
 
             isPacing = false;
             agent.enabled = true;
+            pacingCoroutine = null;
         }
     }
 

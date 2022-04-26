@@ -23,6 +23,11 @@ internal struct AnimatorParams
 
     public void SetBool(PacmanState state)
     {
+        if (GameController.IsFreezed)
+        {
+            state = PacmanState.Idle;
+        }
+
         switch (state)
         {
             default:

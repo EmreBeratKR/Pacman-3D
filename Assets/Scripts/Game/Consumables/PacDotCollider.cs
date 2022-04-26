@@ -9,6 +9,7 @@ public class PacDotCollider : CustomCollider<BoxCollider>, IConsumable
 
     public void Consume()
     {
+        main.transform.parent = null;
         EventSystem.ConsumableConsumed(Value);
         Destroy(main);
     }

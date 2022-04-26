@@ -24,11 +24,13 @@ public class GameController : Scenegleton<GameController>
 
     private void OnEnable()
     {
+        EventSystem.OnGameWin += OnGameWin;
         EventSystem.OnGameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
+        EventSystem.OnGameWin -= OnGameWin;
         EventSystem.OnGameOver -= OnGameOver;
     }
 
@@ -52,6 +54,26 @@ public class GameController : Scenegleton<GameController>
         return false;
     }
 
+    private void OnGameWin()
+    {
+        StartCoroutine(GameWinCoroutine());
+
+        IEnumerator GameWinCoroutine()
+        {
+            yield return WinAnimation.Play();
+
+            ConsumableContainer.Destroy();
+
+            yield return TextWriter.WriteGameWin();
+
+            yield return SceneTransition.FadeIn();
+        
+            SceneController.LoadMainMenu();
+
+            yield return SceneTransition.FadeOut();
+        }
+    }
+
     private void OnGameOver(int score, int lifeLeft)
     {
         StartCoroutine(GameOverCoroutine());
@@ -64,7 +86,13 @@ public class GameController : Scenegleton<GameController>
             {
                 ConsumableContainer.Destroy();
                 
-                yield return GameOverTitle.Show();
+                yield return TextWriter.WriteGameOver();
+
+                yield return SceneTransition.FadeIn();
+            
+                SceneController.LoadMainMenu();
+
+                yield return SceneTransition.FadeOut();
             }
             else
             {
