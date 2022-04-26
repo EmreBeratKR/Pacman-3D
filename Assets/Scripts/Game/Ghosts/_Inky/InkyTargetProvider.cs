@@ -7,7 +7,7 @@ public class InkyTargetProvider : GhostTargetProvider
         get
         {
             var blinkyPos = GhostContainer.BlinkyGhost.Position;
-            var blinkyDistance = Pacman.Position - blinkyPos;
+            var blinkyDistance = Pacman.DesiredPosition - blinkyPos;
             return blinkyPos + blinkyDistance * 2;
         }
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pacman : Scenegleton<Pacman>
 {
-    public const float TouchRange = 1;
+    public const float TouchRange = GameArea.DotDistance;
     public const int MaxLife = 3;
     private const string PlayerPrefs_RemainingLife = "Remaining Life";
 
