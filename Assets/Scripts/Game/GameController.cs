@@ -122,8 +122,6 @@ public class GameController : Scenegleton<GameController>
     {
         Pacman.RestoreLives();
         CurrentScore.ResetScore();
-        TextWriter.WriteBeReady();
-        AudioManager.PlayStartMusic();
     }
 
     public static void StartGame()

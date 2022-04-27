@@ -34,6 +34,9 @@ public class SceneController : Singleton<SceneController>
             GameController.Init();
 
             yield return SceneTransition.FadeOut();
+
+            TextWriter.WriteBeReady();
+            AudioManager.PlayStartMusic();
         }
     }
 
@@ -47,12 +50,10 @@ public class SceneController : Singleton<SceneController>
 
             LoadGame();
 
-            yield return null;
+            yield return SceneTransition.FadeOut();
 
             TextWriter.WriteBeReady();
             AudioManager.PlayStartMusic();
-
-            yield return SceneTransition.FadeOut();
         }
     }
 
