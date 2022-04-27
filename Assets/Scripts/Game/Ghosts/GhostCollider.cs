@@ -45,7 +45,7 @@ public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnabl
         var positionY = main.transform.position.y;
         var respawnPoint = GameArea.Center;
         respawnPoint.y = positionY;
-        main.transform.position = respawnPoint;
+        ghost.PathFinder.Warp(respawnPoint);
         main.SetActive(true);
     }
 
