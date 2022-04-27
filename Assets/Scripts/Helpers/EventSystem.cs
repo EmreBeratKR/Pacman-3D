@@ -6,10 +6,10 @@ public static class EventSystem
     public delegate void ParamsGenericHandler<T>(params T[] args);
 
     public static event DefaultHandler OnGhostKilled;
-    public static event DefaultHandler OnGameWin;
     
-    public static event GenericHandler<GameMode> OnGameModeChanged;
+    public static event GenericHandler<int> OnGameWin;
     public static event GenericHandler<int> OnConsumableConsumed;
+    public static event GenericHandler<GameMode> OnGameModeChanged;
 
     public static event DoubleGenericHandler<int, int> OnGameOver;
 
@@ -21,20 +21,19 @@ public static class EventSystem
         OnGhostKilled?.Invoke();
     } 
 
-    public static void GameWin()
-    {
-        OnGameWin?.Invoke();
-    }
 
-
-    public static void GameModeChanged(GameMode gameMode)
+    public static void GameWin(int score)
     {
-        OnGameModeChanged?.Invoke(gameMode);
+        OnGameWin?.Invoke(score);
     }
 
     public static void ConsumableConsumed(int score)
     {
         OnConsumableConsumed?.Invoke(score);
+    }
+    public static void GameModeChanged(GameMode gameMode)
+    {
+        OnGameModeChanged?.Invoke(gameMode);
     }
 
 

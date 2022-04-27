@@ -47,6 +47,9 @@ public class SceneController : Singleton<SceneController>
 
             LoadGame();
 
+            yield return null;
+
+            TextWriter.WriteBeReady();
             AudioManager.PlayStartMusic();
 
             yield return SceneTransition.FadeOut();

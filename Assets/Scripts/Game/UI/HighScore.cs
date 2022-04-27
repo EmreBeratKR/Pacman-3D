@@ -21,27 +21,39 @@ public class HighScore : Scenegleton<HighScore>
 
     private void OnEnable()
     {
+        EventSystem.OnGameWin += OnGameWin;
         EventSystem.OnGameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
+        EventSystem.OnGameWin -= OnGameWin;
         EventSystem.OnGameOver -= OnGameOver;
+    }
+
+    private void OnGameWin(int score)
+    {
+        CheckForNewHighScore(score);
     }
 
     private void OnGameOver(int score, int lifeLeft)
     {
         if (lifeLeft != 0) return;
 
-        if (score > Value)
-        {
-            Value = score;
-            UpdateHighScoreCounter();
-        }
+        CheckForNewHighScore(score);
     }
 
     private void UpdateHighScoreCounter()
     {
         counter.text = Value.ToString();
+    }
+
+    public static void CheckForNewHighScore(int newScore)
+    {
+        if (newScore > Value)
+        {
+            Value = newScore;
+            Instance.UpdateHighScoreCounter();
+        }
     }
 }

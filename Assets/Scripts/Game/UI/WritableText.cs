@@ -38,4 +38,9 @@ public class WritableText : MonoBehaviour
             }
         }
     }
+
+    public void Hide()
+    {
+        title.gameObject.SetActive(false);
+    }
 }

@@ -54,7 +54,7 @@ public class GameController : Scenegleton<GameController>
         return false;
     }
 
-    private void OnGameWin()
+    private void OnGameWin(int score)
     {
         AudioManager.StopGhostMove();
         AudioManager.StopGhostTurnBlue();
@@ -122,6 +122,7 @@ public class GameController : Scenegleton<GameController>
     {
         Pacman.RestoreLives();
         CurrentScore.ResetScore();
+        TextWriter.WriteBeReady();
         AudioManager.PlayStartMusic();
     }
 

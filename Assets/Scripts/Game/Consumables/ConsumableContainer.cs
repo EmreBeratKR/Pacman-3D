@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ConsumableContainer : Singleton<ConsumableContainer>
@@ -39,8 +40,16 @@ public class ConsumableContainer : Singleton<ConsumableContainer>
     {
         if (IsAllCollected)
         {
-            EventSystem.GameWin();
+            StartCoroutine(WinStartCoroutine());
+        }
+
+        IEnumerator WinStartCoroutine()
+        {
             GameController.FreezeGame();
+
+            yield return null;
+
+            EventSystem.GameWin(CurrentScore.Score);
         }
     }
 }
