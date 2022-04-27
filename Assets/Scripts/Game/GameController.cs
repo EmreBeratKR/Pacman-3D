@@ -100,11 +100,11 @@ public class GameController : Scenegleton<GameController>
 
             if (lifeLeft == 0)
             {
-                ConsumableContainer.Destroy();
-                
                 yield return TextWriter.WriteGameOver();
 
                 yield return SceneTransition.FadeIn();
+                
+                ConsumableContainer.Destroy();
             
                 SceneController.LoadMainMenu();
 

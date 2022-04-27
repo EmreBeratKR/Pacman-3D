@@ -3,11 +3,39 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
+    private const string PlayerPrefs_Volume = "Volume";
+
     private float eatDotTimer = 0;
+
+
+    public static float Volume
+    {
+        get => PlayerPrefs.GetFloat(PlayerPrefs_Volume, 1f);
+        set
+        {
+            PlayerPrefs.SetFloat(PlayerPrefs_Volume, value);
+            UpdateVolume(Volume);
+        }
+    }
+
+    public static bool IsVolumeOn => Mathf.RoundToInt(Volume) == 1;
 
     public static bool IsStartMusicPlaying => Instance.musics.startMusic.isPlaying;
     public static bool IsGameOverPlaying => Instance.sfxs.gameOver.isPlaying;
 
+
+    public static void StopAll()
+    {
+        foreach (var music in Instance.musics.All)
+        {
+            music.Stop();
+        }
+
+        foreach (var sfx in Instance.sfxs.All)
+        {
+            sfx.Stop();
+        }
+    }
 
     public static void PlayStartMusic()
     {
@@ -117,6 +145,19 @@ public class AudioManager : Singleton<AudioManager>
         catch (System.Exception){}
     }
 
+    private static void UpdateVolume(float volume)
+    {
+        foreach (var music in Instance.musics.All)
+        {
+            music.volume = volume;
+        }
+
+        foreach (var sfx in Instance.sfxs.All)
+        {
+            sfx.volume = volume;
+        }
+    }
+
 
 
 
@@ -125,6 +166,8 @@ public class AudioManager : Singleton<AudioManager>
     [Serializable]
     internal struct Musics
     {
+        public AudioSource[] All => new AudioSource[] { startMusic };
+
         public AudioSource startMusic;
     }
 
@@ -133,6 +176,16 @@ public class AudioManager : Singleton<AudioManager>
     [Serializable]
     internal struct SFXs
     {
+        public AudioSource[] All => new AudioSource[] 
+        {
+            eatDot,
+            eatGhost,
+            gameOver,
+            ghostMove,
+            ghostReturnBase,
+            ghostTurnBlue
+        };
+
         public AudioSource eatDot;
         public AudioSource eatGhost;
         public AudioSource gameOver;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnable
+public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnable, ITeleportable
 {
     [SerializeField] private GameObject main;
     public GameObject Main => this.main;
@@ -47,5 +47,13 @@ public class GhostCollider : CustomCollider<BoxCollider>, IKillable, IRespawnabl
         respawnPoint.y = positionY;
         main.transform.position = respawnPoint;
         main.SetActive(true);
+    }
+
+    public void Teleport(Teleporter from, Teleporter to)
+    {
+        var positionY = main.transform.position.y;
+        var destination = to.Position;
+
+        ghost.PathFinder.Warp(new Vector3(destination.x, positionY, destination.z));
     }
 }

@@ -65,6 +65,11 @@ public class GhostPathFinding : MonoBehaviour
         }
     }
 
+    
+    public void Warp(Vector3 position)
+    {
+        agent.Warp(position);
+    }
 
     private void Start()
     {
