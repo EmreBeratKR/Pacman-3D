@@ -1,3 +1,5 @@
 # Pacman-3D
  
-You can play it on your browser : https://emreberatkr.itch.io/pacman-3d
+[<img align="left" width=300px alt="Itch.io" src="https://static.itch.io/images/badge.svg"/>][itchio]
+
+[itchio]: https://emreberatkr.itch.io/pacman-3d
